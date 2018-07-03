@@ -1,10 +1,9 @@
 # Certs 
-*.pem
+https/*.pem
 
 # Logs
-.logs/
-*.log
-*.b64
+.logs/*.log
+.logs/*.b64
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
