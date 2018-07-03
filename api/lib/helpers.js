@@ -5,10 +5,11 @@
  */
 
 // Dependencies
-const config = require('./config');
 const crypto = require('crypto');
 const https = require('https');
 const querystring = require('querystring');
+
+const config = require('./config');
 
 // Container for all the helpers
 var helpers = {};
@@ -46,7 +47,7 @@ helpers.createRandomString = (strLength) => {
       // Get a random charactert from the possibleCharacters string
       var randomCharacter = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
       // Append this character to the string
-      str+=randomCharacter;
+      str += randomCharacter;
     }
     // Return the final string
     return str;

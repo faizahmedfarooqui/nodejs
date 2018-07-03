@@ -7,14 +7,15 @@
  // Dependencies
 const path = require('path');
 const fs = require('fs');
-const _data = require('./data');
 const https = require('https');
 const http = require('http');
-const helpers = require('./helpers');
 const url = require('url');
-const _logs = require('./logs');
 const util = require('util');
 const debug = util.debuglog('workers');
+
+const _data = require('./data');
+const helpers = require('./helpers');
+const _logs = require('./logs');
 
 // Instantiate the worker module object
 var workers = {};
@@ -26,17 +27,17 @@ workers.gatherAllChecks = () => {
     if (!err && checks && checks.length > 0) {
       checks.forEach((check) => {
         // Read in the check data
-        _data.read('checks',check, (err, originalCheckData) => {
+        _data.read('checks', check, (err, originalCheckData) => {
           if (!err && originalCheckData) {
             // Pass it to the check validator, and let that function continue the function or log the error(s) as needed
             workers.validateCheckData(originalCheckData);
           } else {
-            debug("Error reading one of the check's data: ",err);
+            debug('Error reading one of the check\'s data: ', err);
           }
         });
       });
     } else {
-      debug('Error: Could not find any checks to process');
+      debug('Error Could not find any checks to process');
     }
   });
 };
@@ -46,13 +47,13 @@ workers.validateCheckData = (originalCheckData) => {
   originalCheckData = typeof(originalCheckData) == 'object' && originalCheckData !== null ? originalCheckData : {};
   originalCheckData.id = typeof(originalCheckData.id) == 'string' && originalCheckData.id.trim().length == 20 ? originalCheckData.id.trim() : false;
   originalCheckData.userPhone = typeof(originalCheckData.userPhone) == 'string' && originalCheckData.userPhone.trim().length == 10 ? originalCheckData.userPhone.trim() : false;
-  originalCheckData.protocol = typeof(originalCheckData.protocol) == 'string' && ['http','https'].indexOf(originalCheckData.protocol) > -1 ? originalCheckData.protocol : false;
+  originalCheckData.protocol = typeof(originalCheckData.protocol) == 'string' && ['http', 'https'].indexOf(originalCheckData.protocol) > -1 ? originalCheckData.protocol : false;
   originalCheckData.url = typeof(originalCheckData.url) == 'string' && originalCheckData.url.trim().length > 0 ? originalCheckData.url.trim() : false;
-  originalCheckData.method = typeof(originalCheckData.method) == 'string' &&  ['post','get','put','delete'].indexOf(originalCheckData.method) > -1 ? originalCheckData.method : false;
+  originalCheckData.method = typeof(originalCheckData.method) == 'string' &&  ['post', 'get', 'put', 'delete'].indexOf(originalCheckData.method) > -1 ? originalCheckData.method : false;
   originalCheckData.successCodes = typeof(originalCheckData.successCodes) == 'object' && originalCheckData.successCodes instanceof Array && originalCheckData.successCodes.length > 0 ? originalCheckData.successCodes : false;
   originalCheckData.timeoutSeconds = typeof(originalCheckData.timeoutSeconds) == 'number' && originalCheckData.timeoutSeconds % 1 === 0 && originalCheckData.timeoutSeconds >= 1 && originalCheckData.timeoutSeconds <= 5 ? originalCheckData.timeoutSeconds : false;
   // Set the keys that may not be set (if the workers have never seen this check before)
-  originalCheckData.state = typeof(originalCheckData.state) == 'string' && ['up','down'].indexOf(originalCheckData.state) > -1 ? originalCheckData.state : 'down';
+  originalCheckData.state = typeof(originalCheckData.state) == 'string' && ['up', 'down'].indexOf(originalCheckData.state) > -1 ? originalCheckData.state : 'down';
   originalCheckData.lastChecked = typeof(originalCheckData.lastChecked) == 'number' && originalCheckData.lastChecked > 0 ? originalCheckData.lastChecked : false;
 
   // If all checks pass, pass the data along to the next step in the process
@@ -100,7 +101,7 @@ workers.performCheck = (originalCheckData) => {
       // Update the checkOutcome and pass the data along
       checkOutcome.responseCode = status;
       if (! outcomeSent) {
-        workers.processCheckOutcome(originalCheckData,checkOutcome);
+        workers.processCheckOutcome(originalCheckData, checkOutcome);
         outcomeSent = true;
       }
   });
@@ -108,9 +109,9 @@ workers.performCheck = (originalCheckData) => {
   // Bind to the error event so it doesn't get thrown
   req.on('error', (e) => {
     // Update the checkOutcome and pass the data along
-    checkOutcome.error = {'error' : true, 'value' : e};
+    checkOutcome.error = {error: true, value: e};
     if (! outcomeSent) {
-      workers.processCheckOutcome(originalCheckData,checkOutcome);
+      workers.processCheckOutcome(originalCheckData, checkOutcome);
       outcomeSent = true;
     }
   });
@@ -118,9 +119,9 @@ workers.performCheck = (originalCheckData) => {
   // Bind to the timeout event
   req.on('timeout', () => {
     // Update the checkOutcome and pass the data along
-    checkOutcome.error = {'error' : true, 'value' : 'timeout'};
+    checkOutcome.error = {error: true, value: 'timeout'};
     if (! outcomeSent) {
-      workers.processCheckOutcome(originalCheckData,checkOutcome);
+      workers.processCheckOutcome(originalCheckData, checkOutcome);
       outcomeSent = true;
     }
   });
@@ -131,7 +132,7 @@ workers.performCheck = (originalCheckData) => {
 
 // Process the check outcome, update the check data as needed, trigger an alert if needed
 // Special logic for accomodating a check that has never been tested before (don't alert on that one)
-workers.processCheckOutcome = (originalCheckData,checkOutcome) => {
+workers.processCheckOutcome = (originalCheckData, checkOutcome) => {
 
   // Decide if the check is considered up or down
   var state = !checkOutcome.error && checkOutcome.responseCode && originalCheckData.successCodes.indexOf(checkOutcome.responseCode) > -1 ? 'up' : 'down';
@@ -155,10 +156,10 @@ workers.processCheckOutcome = (originalCheckData,checkOutcome) => {
       if (alertWarranted) {
         workers.alertUserToStatusChange(newCheckData);
       } else {
-        debug("Check outcome has not changed, no alert needed");
+        debug('Check outcome has not changed, no alert needed');
       }
     } else {
-      debug("Error trying to save updates to one of the checks");
+      debug('Error trying to save updates to one of the checks');
     }
   });
 };
@@ -170,7 +171,7 @@ workers.alertUserToStatusChange = (newCheckData) => {
     if (! err){
       debug('Success: User was alerted to a status change in their check, via sms: ', msg);
     } else {
-      debug('Error: Could not send sms alert to user who had a state change in their check', err);
+      debug('Error: Could not send sms alert to user who had a state change in their check: ', err);
     }
   });
 };
@@ -200,12 +201,11 @@ workers.log = (originalCheckData, checkOutcome, state, alertWarranted, timeOfChe
       debug('Logging to file failed');
     }
   });
-
 };
 
 // Timer to execute the worker-process once per minute
 workers.loop = () => {
-  setInterval(function(){
+  setInterval(() => {
     workers.gatherAllChecks();
   }, 1000 * 60);
 };
@@ -214,7 +214,7 @@ workers.loop = () => {
 workers.rotateLogs = () => {
   // List all the (non compressed) log files
   _logs.list(false, (err, logs) => {
-    if (!err && logs && logs.length > 0){
+    if (!err && logs && logs.length > 0) {
       logs.forEach((logName) => {
         // Compress the data to a different file
         var logId = logName.replace('.log','');
@@ -242,7 +242,7 @@ workers.rotateLogs = () => {
 
 // Timer to execute the log-rotation process once per day
 workers.logRotationLoop = () => {
-  setInterval(function(){
+  setInterval(() => {
     workers.rotateLogs();
   },1000 * 60 * 60 * 24);
 }
@@ -251,7 +251,7 @@ workers.logRotationLoop = () => {
 workers.init = () => {
 
   // Send to console, in yellow
-  console.log('\x1b[33m%s\x1b[0m','Background workers are running');
+  console.log('\x1b[33m%s\x1b[0m', 'Background workers are running...');
 
   // Execute all the checks immediately
   workers.gatherAllChecks();

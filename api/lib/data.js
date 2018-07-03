@@ -7,6 +7,7 @@
 // Dependencies
 const fs = require('fs');
 const path = require('path');
+
 const helpers = require('./helpers');
 
 // Container for module (to be exported)
@@ -99,16 +100,17 @@ var lib = {
   },
 
   // List all the items in a directory
+  // [Note: This will be used in workers!]
   list: (dir, callback) => {
-    fs.readdir(lib.baseDir+dir+'/', (err,data) => {
+    fs.readdir(lib.baseDir+dir+'/', (err, data) => {
       if (!err && data && data.length > 0) {
         var trimmedFileNames = [];
         data.forEach((fileName) => {
-          trimmedFileNames.push(fileName.replace('.json',''));
+          trimmedFileNames.push(fileName.replace('.json', ''));
         });
         callback(false, trimmedFileNames);
       } else {
-        callback(err,data);
+        callback(err, data);
       }
     });
   }

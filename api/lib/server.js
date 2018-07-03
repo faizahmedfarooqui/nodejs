@@ -1,31 +1,32 @@
 /*
  * Server-related tasks
  *
+ * @author Faiz A. Farooqui <faiz@geekyants.com>
  */
 
- // Dependencies
- const http = require('http');
- const https = require('https');
- const url = require('url');
- const StringDecoder = require('string_decoder').StringDecoder;
- const config = require('./config');
- const fs = require('fs');
- const handlers = require('./handlers');
- const helpers = require('./helpers');
- const path = require('path');
- const util = require('util');
- const debug = util.debuglog('server');
+// Dependencies
+const http = require('http');
+const https = require('https');
+const url = require('url');
+const StringDecoder = require('string_decoder').StringDecoder;
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
+const debug = util.debuglog('server');
 
+const config = require('./config');
+const handlers = require('./handlers');
+const helpers = require('./helpers');
 
 // Instantiate the server module object
 var server = {};
 
- // Instantiate the HTTP server
+// Instantiate the HTTP server
 server.httpServer = http.createServer((req, res) => {
    server.unifiedServer(req, res);
- });
+});
 
- // Instantiate the HTTPS server
+// Instantiate the HTTPS server
 server.httpsServerOptions = {
   key: fs.readFileSync(path.join(__dirname,'/../https/key.pem')),
   cert: fs.readFileSync(path.join(__dirname,'/../https/cert.pem'))
@@ -35,7 +36,7 @@ server.httpsServer = https.createServer(server.httpsServerOptions, (req, res) =>
   server.unifiedServer(req, res);
 });
 
- // All the server logic for both the http and https server
+// All the server logic for both the http and https server
 server.unifiedServer = (req, res) => {
   // Parse the url
   var parsedUrl = url.parse(req.url, true);
@@ -57,9 +58,14 @@ server.unifiedServer = (req, res) => {
   var decoder = new StringDecoder('utf-8');
   
   var buffer = '';
+
+  // The chunk emitted in each 'data' event is a Buffer. If you know it's going to be 
+  // string data, the best thing to do is collect the data in an array, then at 
+  // the 'end', concatenate and stringify it.
   req.on('data', (data) => {
     buffer += decoder.write(data);
   });
+
   req.on('end', () => {
     buffer += decoder.end();
 
@@ -102,7 +108,7 @@ server.unifiedServer = (req, res) => {
   });
 };
 
- // Define the request router
+// Define the request router
 server.router = {
   ping: handlers.ping,
   users: handlers.users,
@@ -110,7 +116,7 @@ server.router = {
   checks: handlers.checks
 };
 
- // Init script
+// Init script
 server.init = () => {
   // Start the HTTP server
   server.httpServer.listen(config.httpPort, () => {
