@@ -1,3 +1,8 @@
+# Data
+.data/checks/*.json
+.data/tokens/*.json
+.data/users/*.json
+
 # Certs 
 https/*.pem
 

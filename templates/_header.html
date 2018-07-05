@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- General Settings -->
+	<meta charset="utf-8">
+	<meta http-equiv="content-language" content="en-us">
+	<base href="{global.baseUrl}" />
+
+	<!-- Meta Tags-->
+	<title>{head.title} | {global.appName}</title>
+	<meta name="description" content="{head.description}">
+
+	<!-- Static Assets -->
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<script type="text/javascript" charset="utf-8" src="public/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="public/app.css" />
+</head>
+<body class="{body.class}">
+	<!-- Page wrapper -->
+	<div class="wrapper">
+
+		<!-- Header -->
+		<div class="header">
+			<!-- Logo -->
+			<a class="logo"  href="/"></a>
+			<!-- Navigation -->
+			<ul class="menu">
+				<li>
+					<a href="/">Home</a>
+				</li>
+				<li>
+					<a class="loggedOut" href="/">SingUp</a>
+				</li>
+				<li>
+					<a class="loggedOut" href="/">LogIn</a>
+				</li>
+				<li>
+					<a class="loggedIn" href="/">Dashboard</a>
+				</li>
+				<li>
+					<a class="loggedIn" href="/">Account Settings</a>
+				</li>
+				<li>
+					<a class="loggedIn" href="/">Logout</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Page Specific Content -->
+		<div class="content">
