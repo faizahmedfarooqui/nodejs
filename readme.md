@@ -19,7 +19,7 @@ cd nodejs;
 
 ### List of things, this repository contains:
 
-* A server to listen to HTTP/HTTPS requests
+* A server to listen to HTTP/HTTPS requests ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L26-#L38))
 * RESTful API to CRUD and many more for users, tokens & checks
 * Router for request methods like GET, POST, PUT & DELETE
 * Handlers(ie. controllers) to handle requests & their methods
