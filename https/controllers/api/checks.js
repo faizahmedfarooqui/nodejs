@@ -9,6 +9,9 @@ const _data = require('./../../../lib/data');
 const helpers = require('./../../../lib/helpers');
 const config = require('./../../../lib/config');
 
+const _url = require('url');
+const dns = require('dns');
+
 const _tokens = require('./tokens');
 
 // Checks handler methods
@@ -37,40 +40,51 @@ var _checks = {
           _data.read('users', userPhone, (err, userData) => {
             if (!err && userData) {
               var userChecks = typeof(userData.checks) == 'object' && userData.checks instanceof Array ? userData.checks : [];
+              
               // Verify that user has less than the number of max-checks per user
               if (userChecks.length < config.maxChecks) {
-                // Create random id for check
-                var checkId = helpers.createRandomString(20);
+                
+                // Verify that the URL given has DNS entries (and therefore can resolve)
+                var parseUrl = _url.parse(protocol+'://'+url, true);
+                var hostName = typeof(parsedUrl.hostname) == 'string' && parsedUrl.hostname.length > 0 ? parsedUrl.hostname : false;
+                dns.resolve(hostName, (err, records) => {
+                  if (!err && records) {
+                    // Create random id for check
+                    var checkId = helpers.createRandomString(20);
 
-                // Create check object including userPhone
-                var checkObject = {
-                  id: checkId,
-                  userPhone: userPhone,
-                  protocol: protocol,
-                  url: url,
-                  method: method,
-                  successCodes: successCodes,
-                  timeoutSeconds: timeoutSeconds
-                };
+                    // Create check object including userPhone
+                    var checkObject = {
+                      id: checkId,
+                      userPhone: userPhone,
+                      protocol: protocol,
+                      url: url,
+                      method: method,
+                      successCodes: successCodes,
+                      timeoutSeconds: timeoutSeconds
+                    };
 
-                // Save the object
-                _data.create('checks', checkId, checkObject, (err) => {
-                  if (! err) {
-                    // Add check id to the user's object
-                    userData.checks = userChecks;
-                    userData.checks.push(checkId);
-
-                    // Save the new user data
-                    _data.update('users', userPhone, userData, (err) => {
+                    // Save the object
+                    _data.create('checks', checkId, checkObject, (err) => {
                       if (! err) {
-                        // Return the data about the new check
-                        callback(200, checkObject);
+                        // Add check id to the user's object
+                        userData.checks = userChecks;
+                        userData.checks.push(checkId);
+
+                        // Save the new user data
+                        _data.update('users', userPhone, userData, (err) => {
+                          if (! err) {
+                            // Return the data about the new check
+                            callback(200, checkObject);
+                          } else {
+                            callback(500, {'Error': 'Could not update the user with the new check.'});
+                          }
+                        });
                       } else {
-                        callback(500, {'Error': 'Could not update the user with the new check.'});
+                        callback(500, {'Error': 'Could not create the new check'});
                       }
                     });
                   } else {
-                    callback(500, {'Error': 'Could not create the new check'});
+                    callback(400, {'Error': 'The hostname of the URL entrered did not resolve to any DNS entries'});
                   }
                 });
               } else {
