@@ -29,12 +29,12 @@ Please follow the steps given;
 ### List of things, this repository contains:
 
 * A server to listen to HTTP/HTTPS requests ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L26-#L38))
-* RESTful API to CRUD and many more for users, tokens & checks
-* Router for request methods like GET, POST, PUT & DELETE
-* Handlers(ie. controllers) to handle requests & their methods
-* A Worker to execute things in background
-* A logging logic that logs everything into a *.log file
-* A gzip compression logic which compresses older log file
-* Local debug environment for the developments in each files
-* A Web App with template logic & data interpolation
-* Logic to serve static assets to the web-app
+* RESTful API to CRUD and many more for users, tokens & checks ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js#L28-#L118))
+* Router for request methods like GET, POST, PUT & DELETE ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/router.js))
+* Handlers(ie. controllers) to handle requests & their methods ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js))
+* A Worker to execute things in background ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/workers.js))
+* A logging logic that logs everything into a *.log file ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/logs.js))
+* A gzip compression logic which compresses older log file ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/logs.js#L69-#L110))
+* Local debug environment for the developments in each files ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L15))
+* A Web App with template logic & data interpolation ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/helpers.js#L116-#L182))
+* Logic to serve static assets to the web-app ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/helpers.js#L184-#L199))
