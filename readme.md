@@ -62,6 +62,6 @@ Please follow the steps given;
 * Server request are handled using try-catch block & now rather than app crash send 500 error response ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L88-#L99))
 
 #### 8. Debugger Mode:
-* For detailed information please use office NodeJS [Documentation](https://nodejs.org/api/debugger.html)
+* For detailed information please use official NodeJS [Documentation](https://nodejs.org/api/debugger.html)
 * To run this app in debugger mode use command `node inspect index-debug.js`
 
