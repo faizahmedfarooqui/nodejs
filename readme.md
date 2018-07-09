@@ -57,3 +57,11 @@ Please follow the steps given;
 * The CLI tool that runs using node's readline, events libraries & many more ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli.js))
 * CLI Events handlers ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-handlers.js))
 * CLI Events responders ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-responders.js))
+
+#### 7. Handling error crash:
+* Server request are handled using try-catch block & now rather than app crash send 500 error response ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L88-#L99))
+
+#### 8. Debugger Mode:
+* For detailed information please use office NodeJS [Documentation](https://nodejs.org/api/debugger.html)
+* To run this app in debugger mode use command `node inspect index-debug.js`
+
