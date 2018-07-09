@@ -20,7 +20,7 @@ cd nodejs;
 ### List of things, this repository contains:
 
 * A server to listen to HTTP/HTTPS requests
-* API to CRUD and many more for users, tokens & checks
+* RESTful API to CRUD and many more for users, tokens & checks
 * Router for request methods like GET, POST, PUT & DELETE
 * Handlers(ie. controllers) to handle requests & their methods
 * A Worker to execute things in background

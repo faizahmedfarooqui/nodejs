@@ -5,9 +5,9 @@
  */
 
 // Dependencies
-const _data = require('./../../lib/data');
-const helpers = require('./../../lib/helpers');
-const config = require('./../../lib/config');
+const _data = require('./../../../lib/data');
+const helpers = require('./../../../lib/helpers');
+const config = require('./../../../lib/config');
 
 const _tokens = require('./tokens');
 
