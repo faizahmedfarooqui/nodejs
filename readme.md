@@ -10,12 +10,21 @@ A Boilerplate built in NodeJS without using NPM
 
 NodeJS (LTS) ie. >= 8.11.3
 
-### How to Download?
+### How to download?
 
 ```sh
 git clone https://github.com/faizahmedfarooqui/nodejs.git;
 cd nodejs;
 ```
+
+### How to setup?
+
+Please follow the steps given;
+1. Goto the `https/keyGeneration.txt` file in the repository
+2. Execute the given command to generate the file `key.pem` & `cert.pem` into the same folder
+3. Generate two directory/folders into the root of this repo
+    * One should be named `.logs`
+    * And one should be named `.data`
 
 ### List of things, this repository contains:
 
