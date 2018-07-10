@@ -65,6 +65,22 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 * CLI Events handlers ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-handlers.js))
 * CLI Events responders ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-responders.js))
 
+```sh
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+                     CLI Manual
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+exit                          Kill the CLI (and the rest of the application)
+man                           Show this help page
+help                          Alias of the "man" command
+stats                         Get statistics on the underlying operating system and resource utilization
+List users                    Show a list of all the registered (undeleted) users in the system
+More user info --{userId}     Show details of a specified user
+List checks --up --down       Show a list of all the active checks in the system, including their state. The "--up" and "--down flags are both optional."
+More check info --{checkId}   Show details of a specified check
+List logs                     Show a list of all the log files available to be read (compressed only)
+More log info --{fileName}    Show details of a specified log file
+```
+
 #### 7. Handling error crash:
 * Server request are handled using try-catch block & now rather than app crash send 500 error response ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L88-#L99))
 
@@ -80,3 +96,6 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 #### 10. Cluster:
 * Added a new file with clusters, here forks are created by the count of the cpus available ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/index-cluster.js))
 * To see how it works, run command `node index-cluster.js` in your terminal
+
+#### 11. Child Process:
+* Using `ls` commands into the `.logs` folder from CLI commands `list logs` ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-responders.js#L209-#L222))
