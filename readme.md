@@ -1,5 +1,3 @@
-#### This repo is under construction!
-
 # Implementing NodeJS without using NPM
 
 ### What is it?
@@ -99,3 +97,14 @@ More log info --{fileName}    Show details of a specified log file
 
 #### 11. Child Process:
 * Using `ls` commands into the `.logs` folder from CLI commands `list logs` ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-responders.js#L209-#L222))
+
+#### 12. Other NodeJS Modules:
+* Use of Async Hooks module ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/async-hooks/index.js))
+* Use of HTTP/2 module in Client & Server Logic ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/http2))
+* Use of NET module in Client & Server Logic ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/net))
+* Use of REPL module ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/repl/index.js))
+* Use of TLS/SSL module in Client & Server Logic ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/tls))
+* Use of UDP module in Client & Server Logic ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/udp))
+* Use of VM module ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/vm/index.js))
+
+#### That's It!
