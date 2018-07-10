@@ -72,3 +72,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 * For detailed information please use official NodeJS [Documentation](https://nodejs.org/api/debugger.html)
 * To run this app in debugger mode use command `node inspect index-debug.js`
 
+#### 9. Performance Hooks:
+* Added PerformanceObserver Node Class to observe all the entries & log them out to the CLI ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/https/controllers/api/tokens.js#L12-#L31))
+* Added Performance Mark & Measure methods to measure all the marked performance steps ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/https/controllers/api/tokens.js#L38-#L75))
+* To see how it works run command `NODE_DEBUG=performance node index.js` in your terminal
