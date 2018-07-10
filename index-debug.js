@@ -1,5 +1,5 @@
 /*
- * Primary file for API Server
+ * Primary file for Debugger API Server
  * 
  * @author Faiz A. Farooqui <faiz@geekyants.com>
  */
@@ -14,7 +14,6 @@ var app = {};
 
 // Init function
 app.init = () => {
-
   // Start the server
   debugger;
   server.init();

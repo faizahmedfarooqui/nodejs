@@ -14,17 +14,16 @@ var app = {};
 
 // Init function
 app.init = () => {
+ 	// Start the server
+  	server.init();
 
-  // Start the server
-  server.init();
+  	// Start the workers
+  	workers.init();
 
-  // Start the workers
-  workers.init();
-
-  // Start the CLI, but make sure it starts last
-  setTimeout(() => {
-  	cli.init();
-  }, 500);
+  	// Start the CLI, but make sure it starts last
+  	setTimeout(() => {
+  		cli.init();
+  	}, 500);
 };
 
 // Self executing
