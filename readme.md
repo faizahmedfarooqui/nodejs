@@ -80,3 +80,6 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 #### 10. Cluster:
 * Added a new file with clusters, here forks are created by the count of the cpus available ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/index-cluster.js))
 * To see how it works, run command `node index-cluster.js` in your terminal
+
+#### 11. Child Process:
+* Using `ls` commands into the `.logs` folder from CLI commands `list logs` ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/cli-responders.js#L209-#L222))
