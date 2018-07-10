@@ -10,21 +10,27 @@ A Boilerplate built in NodeJS without using NPM
 
 NodeJS (LTS) ie. >= 8.11.3
 
-### How to download?
+### How to download & setup?
 
 ```sh
+# Clone this repo using your terminal
 git clone https://github.com/faizahmedfarooqui/nodejs.git;
+
+# Go inside the repo
 cd nodejs;
+
+# Make a data directory into the root of the project
+mkdir .data;
+
+# Make a logs directory into the root of the project
+mkdir logs;
+
+# Goto the https directory
+cd https;
+
+# Now run the command given in the file keyGeneration.txt
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
-
-### How to setup?
-
-Please follow the steps given;
-1. Goto the `https/keyGeneration.txt` file in the repository
-2. Execute the given command to generate the file `key.pem` & `cert.pem` into the same folder
-3. Generate two directory/folders into the root of this repo
-    * One should be named `.logs`
-    * And one should be named `.data`
 
 ### List of things, this repository contains:
 
@@ -33,6 +39,7 @@ Please follow the steps given;
 * RESTful API to CRUD and many more for users, tokens & checks ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js#L65-#L118))
 * Router for request methods like GET, POST, PUT & DELETE ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/router.js))
 * Handlers(ie. controllers) to handle requests & their methods ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js))
+* Model Base class ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/data.js))
 
 #### 2. Workers:
 * A Worker to execute things in background ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/workers.js))
