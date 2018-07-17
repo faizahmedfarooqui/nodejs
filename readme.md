@@ -18,7 +18,13 @@ git clone https://github.com/faizahmedfarooqui/nodejs.git;
 cd nodejs;
 
 # Make a data directory into the root of the project
-mkdir .data;
+mkdir .data && cd .data;
+
+# Create 3 more directories into the .data directory
+mkdir users checks tokens;
+
+# Go back to project's root 
+cd ..;
 
 # Make a logs directory into the root of the project
 mkdir logs;
