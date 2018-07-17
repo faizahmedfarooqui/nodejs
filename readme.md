@@ -2,7 +2,7 @@
 
 ### What is it?
 
-A Boilerplate built in NodeJS without using NPM
+A boilerplate or a sample built in **NodeJS** without using **NPM** covering all (or most) of the Node's API modules
 
 ### What is needed?
 
