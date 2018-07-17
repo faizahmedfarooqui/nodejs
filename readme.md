@@ -34,7 +34,7 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out c
 
 #### 1. RESTful API:
 * A server to listen to HTTP/HTTPS requests ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L26-#L39))
-* Deflate / GZIP Compression for HTTP/HTTPS created servers but with logic to check for header's 'ACCEPT_ENCODING' before the compression ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L151-#L179))
+* Deflate / GZIP Compression for HTTP/HTTPS created servers ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L151-#L179))
 * RESTful API to CRUD and many more for users, tokens & checks ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js#L65-#124))
 * Router for request methods like GET, POST, PUT & DELETE ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/router.js))
 * Handlers(ie. controllers) to handle requests & their methods ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/handlers.js))
