@@ -27,7 +27,7 @@ mkdir users checks tokens;
 cd ..;
 
 # Make a logs directory into the root of the project
-mkdir logs;
+mkdir .logs;
 
 # Goto the https directory
 cd https;
