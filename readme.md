@@ -118,7 +118,7 @@ More log info --{fileName}    Show details of a specified log file
 
 ## How do I contribute?
 
-Please read the (contributing.md)[https://github.com/faizahmedfarooqui/nodejs/blob/master/CONTRIBUTING.md]
+Please read the [CONTRIBUTING.md][https://github.com/faizahmedfarooqui/nodejs/blob/master/CONTRIBUTING.md)
 
 ## Issue Template?
 
@@ -130,8 +130,8 @@ Please read the (contributing.md)[https://github.com/faizahmedfarooqui/nodejs/bl
 
 ## Code of Conduct
 
-Please read the file (CODE_OF_CONDUCT.md)[https://github.com/faizahmedfarooqui/nodejs/blob/master/CODE_OF_CONDUCT.md]
+Please read the file [CODE_OF_CONDUCT.md](https://github.com/faizahmedfarooqui/nodejs/blob/master/CODE_OF_CONDUCT.md)
 
 ## License
 
-(Apache-2.0 License)[https://github.com/faizahmedfarooqui/nodejs/blob/master/LICENSE]
+[Apache-2.0 License](https://github.com/faizahmedfarooqui/nodejs/blob/master/LICENSE)
