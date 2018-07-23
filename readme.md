@@ -118,7 +118,7 @@ More log info --{fileName}    Show details of a specified log file
 
 ## How do I contribute?
 
-Please read the [CONTRIBUTING.md][https://github.com/faizahmedfarooqui/nodejs/blob/master/CONTRIBUTING.md)
+Please read the [CONTRIBUTING.md](https://github.com/faizahmedfarooqui/nodejs/blob/master/CONTRIBUTING.md)
 
 ## Issue Template?
 
