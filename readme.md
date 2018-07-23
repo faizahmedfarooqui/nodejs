@@ -1,14 +1,14 @@
 # Implementing NodeJS without using NPM
 
-### What is it?
+## What is it?
 
 A boilerplate or a sample built in **NodeJS** without using **NPM** covering all (or most) of the Node's API modules
 
-### What is needed?
+## What is needed?
 
 NodeJS (LTS) ie. >= 8.11.3
 
-### How to download & setup?
+## How to download & setup?
 
 ```sh
 # Clone this repo using your terminal
@@ -36,7 +36,7 @@ cd https;
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
 
-### List of things, this repository contains:
+## List of things, this repository contains:
 
 #### 1. RESTful API:
 * A server to listen to HTTP/HTTPS requests ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/lib/server.js#L26-#L39))
@@ -115,3 +115,15 @@ More log info --{fileName}    Show details of a specified log file
 * Use of VM module ([View Code](https://github.com/faizahmedfarooqui/nodejs/blob/master/misc/vm/index.js))
 
 #### That's It!
+
+## How do I contribute?
+
+Please read the (contributing.md)[https://github.com/faizahmedfarooqui/nodejs/blob/master/CONTRIBUTING.md]
+
+## Code of Conduct
+
+Please read the file (CODE_OF_CONDUCT.md)[https://github.com/faizahmedfarooqui/nodejs/blob/master/CODE_OF_CONDUCT.md]
+
+## License
+
+(Apache-2.0 License)[https://github.com/faizahmedfarooqui/nodejs/blob/master/LICENSE]
