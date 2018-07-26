@@ -134,4 +134,4 @@ Please read the file [CODE_OF_CONDUCT.md](https://github.com/faizahmedfarooqui/n
 
 ## License
 
-[Apache-2.0 License](https://github.com/faizahmedfarooqui/nodejs/blob/master/LICENSE)
+[MIT License](https://github.com/faizahmedfarooqui/nodejs/blob/master/LICENSE)
