@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-faizhamed",
+  "description": "NodeJS Boilerplate (Implementing NodeJS without using NPM for web, api & cli)",
+  "version": "1.0.0",
+  "main": "index-cluster.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faizahmedfarooqui/nodejs.git"
+  },
+  "author": "Faiz A. Farooqui <faizz.af@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/faizahmedfarooqui/nodejs/issues"
+  },
+  "homepage": "https://nodejs-faizahmed.herokuapp.com"
+}
