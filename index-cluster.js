@@ -23,9 +23,9 @@ app.init = () => {
 		workers.init();
 
 		// Start the CLI, but make sure it starts last
-		setTimeout(() => {
-			cli.init();
-		}, 500);
+		// setTimeout(() => {
+		// 	cli.init();
+		// }, 500);
 
 		// Fork the process, the number of times we have CPUs available
 		for (var i = 0; i < os.cpus().length; i++) {
