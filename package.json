@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index-cluster.js",
   "scripts": {
-    "build": "mkdir .data && cd .data && mkdir users checks tokens && cd .. ",
+    "build": "mkdir .logs .data && cd .data && mkdir users checks tokens && cd .. && cd https && openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem",
     "start": "node index-cluster.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
