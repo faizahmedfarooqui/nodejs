@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index-cluster.js",
   "scripts": {
+    "start": "mkdir .data && cd .data && mkdir users checks tokens && cd .. && node index-cluster.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
