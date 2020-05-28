@@ -8,5 +8,5 @@ RUN mkdir .data && cd .data && mkdir users checks tokens && cd ..
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5000 5001
 CMD [ "node", "index-cluster.js" ]
